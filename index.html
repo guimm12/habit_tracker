@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Habit Tracker</title>
+	</head>
+	<body>
+		<h1>Habit Tracker 2</h1>
+		<button id="greet-btn">Greet</button>
+		<script type="module">
+			import init, { greet } from "./pkg/habit_tracker.js";
+
+			init()
+				.then(() => {
+					document.getElementById("greet-btn").addEventListener("click", () => {
+						alert(greet());
+					});
+				})
+				.catch((e) => {
+					console.error("Error initializing wasm module:", e);
+				});
+		</script>
+	</body>
+</html>
