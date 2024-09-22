@@ -11,3 +11,5 @@ Serve locally (<kbd>Crtl</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd> to reset cache on c
 npm install -g http-server
 http-server -c-1
 ```
+
+<kbd>Crtl</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd> to reset cache on chrome if needed.
