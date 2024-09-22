@@ -1,7 +1,7 @@
 const CACHE_NAME = "habit-tracker-cache-v1";
-const BASE_PATH = "test-pwa-wasm-rust";
+const BASE_PATH = "/test-pwa-wasm-rust/";
 
-let urls = ["/", "/index.html", "/pkg/habit_tracker_bg.wasm", "/pkg/habit_tracker.js", "/manifest.json"];
+let urls = ["", "index.html", "pkg/habit_tracker_bg.wasm", "pkg/habit_tracker.js", "manifest.json"];
 const urlsToCache = urls.map((url) => BASE_PATH + url);
 
 // Install the service worker and cache resources
@@ -13,12 +13,21 @@ self.addEventListener("install", (event) => {
 	);
 });
 
-// Respond with cached resources
+// Network-first strategy
 self.addEventListener("fetch", (event) => {
 	event.respondWith(
-		caches.match(event.request).then((response) => {
-			return response || fetch(event.request);
-		})
+		fetch(event.request)
+			.then((response) => {
+				// If the request is successful, clone and store it in the cache
+				return caches.open(CACHE_NAME).then((cache) => {
+					cache.put(event.request, response.clone());
+					return response;
+				});
+			})
+			.catch(() => {
+				// If the network request fails, return from cache
+				return caches.match(event.request);
+			})
 	);
 });
 
