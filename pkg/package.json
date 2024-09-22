@@ -1,0 +1,15 @@
+{
+  "name": "habit_tracker",
+  "type": "module",
+  "version": "0.1.0",
+  "files": [
+    "habit_tracker_bg.wasm",
+    "habit_tracker.js",
+    "habit_tracker.d.ts"
+  ],
+  "main": "habit_tracker.js",
+  "types": "habit_tracker.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}
