@@ -3,35 +3,26 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Habit Tracker</title>
+		<title>CRUD PWA</title>
 	</head>
 	<body>
-		<h1>Habit Tracker</h1>
-		<button id="greet-btn">Greet</button>
-		<button id="hello-world-btn">Hello World</button>
+		<h1>CRUD PWA with Rust</h1>
 		<script type="module">
-			import init, { greet, hello_world } from "./pkg/habit_tracker.js";
+			import init, { greet, create_item, read_item, update_item, delete_item } from "./pkg/habit_tracker.js";
 
-			init()
-				.then(() => {
-					document.getElementById("greet-btn").addEventListener("click", () => {
-						alert(greet());
-					});
-					document.getElementById("hello-world-btn").addEventListener("click", () => {
-						alert(hello_world());
-					});
-				})
-				.catch((e) => {
-					console.error("Error initializing wasm module:", e);
-				});
+			async function run() {
+				await init();
+				greet("World");
 
-			// Register the service worker
-			if ("serviceWorker" in navigator) {
-				navigator.serviceWorker
-					.register("./service-worker.js")
-					.then(() => console.log("Service Worker registered!"))
-					.catch((error) => console.error("Service Worker registration failed:", error));
+				// Example usage
+				create_item(1, "Item 1");
+				console.log(read_item(1));
+				update_item(1, "Updated Item 1");
+				console.log(read_item(1));
+				delete_item(1);
 			}
+
+			run();
 		</script>
 	</body>
 </html>

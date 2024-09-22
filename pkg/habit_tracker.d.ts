@@ -1,22 +1,43 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
-* @returns {string}
+* @param {string} name
 */
-export function greet(): string;
+export function greet(name: string): void;
 /**
-* @returns {string}
+* @param {number} id
+* @param {string} name
+* @returns {any}
 */
-export function hello_world(): string;
+export function create_item(id: number, name: string): any;
+/**
+* @param {number} id
+* @returns {any}
+*/
+export function read_item(id: number): any;
+/**
+* @param {number} id
+* @param {string} name
+* @returns {any}
+*/
+export function update_item(id: number, name: string): any;
+/**
+* @param {number} id
+*/
+export function delete_item(id: number): void;
 
 export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembly.Module;
 
 export interface InitOutput {
   readonly memory: WebAssembly.Memory;
-  readonly greet: (a: number) => void;
-  readonly hello_world: (a: number) => void;
-  readonly __wbindgen_add_to_stack_pointer: (a: number) => number;
-  readonly __wbindgen_free: (a: number, b: number, c: number) => void;
+  readonly greet: (a: number, b: number) => void;
+  readonly create_item: (a: number, b: number, c: number) => number;
+  readonly read_item: (a: number) => number;
+  readonly delete_item: (a: number) => void;
+  readonly update_item: (a: number, b: number, c: number) => number;
+  readonly __wbindgen_malloc: (a: number, b: number) => number;
+  readonly __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
+  readonly __wbindgen_exn_store: (a: number) => void;
 }
 
 export type SyncInitInput = BufferSource | WebAssembly.Module;
