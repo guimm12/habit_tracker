@@ -2,5 +2,10 @@ use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen]
 pub fn greet() -> String {
-    "Hellow from Rust!".to_string()
+    "Hello from Rust!".to_string()
+}
+
+#[wasm_bindgen]
+pub fn hello_world() -> String {
+    "Hello World!".to_string()
 }

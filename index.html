@@ -6,15 +6,19 @@
 		<title>Habit Tracker</title>
 	</head>
 	<body>
-		<h1>Habit Tracker 2</h1>
+		<h1>Habit Tracker</h1>
 		<button id="greet-btn">Greet</button>
+		<button id="hello-world-btn">Hello World</button>
 		<script type="module">
-			import init, { greet } from "./pkg/habit_tracker.js";
+			import init, { greet, hello_world } from "./pkg/habit_tracker.js";
 
 			init()
 				.then(() => {
 					document.getElementById("greet-btn").addEventListener("click", () => {
 						alert(greet());
+					});
+					document.getElementById("hello-world-btn").addEventListener("click", () => {
+						alert(hello_world());
 					});
 				})
 				.catch((e) => {
